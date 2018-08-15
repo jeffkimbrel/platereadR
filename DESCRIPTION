@@ -1,7 +1,7 @@
-Package: biologR
+Package: platereadR
 Type: Package
-Title: A package for dealing with Biolog Data
-Version: 0.1.14
+Title: A package for dealing with Biolog and plate read data
+Version: 0.2.0
 Author: Jeff Kimbrel
 Maintainer: Jeff Kimbrel <jakpot@gmail.com>
 Description: Yeah, I should put some more info here!
