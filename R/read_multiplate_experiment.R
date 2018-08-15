@@ -1,8 +1,10 @@
 #' Read Series of Excel Files in a Directory
 #'
+#' @param path A folder path containing files
+#'
 #' @export
 
-read_multiplate_experiment = function(path = "") {
+read_multiplate_biolog_experiment = function(path = "") {
 
   require("tidyverse")
   require("readxl")
