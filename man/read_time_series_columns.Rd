@@ -5,7 +5,7 @@
 \title{Read time series in a single excel file}
 \usage{
 read_time_series_columns(file = "", repColumns = c(1, 2, 3),
-  rowReplace = FALSE)
+  rowReplace = FALSE, wellRemove = "")
 }
 \arguments{
 \item{file}{An excel file with wells as columns, and time points as rows}

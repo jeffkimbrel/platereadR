@@ -4,7 +4,7 @@
 \alias{growthMetrics}
 \title{Calculate growth metrics from a df}
 \usage{
-growthMetrics(x, wellRow = "A", t_min = 5, t_max = FALSE)
+growthMetrics(x, wellRow = "A", t_min = 5, t_max = 100)
 }
 \arguments{
 \item{x}{A df from functions such as read_time_series_columns.R}

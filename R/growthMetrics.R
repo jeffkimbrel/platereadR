@@ -7,28 +7,33 @@
 #'
 #' @export
 
-growthMetrics = function(x, wellRow = "A", t_min = 5, t_max = FALSE) {
+growthMetrics = function(x, wellRow = "A", t_min = 5, t_max = 100) {
 
   require("tidyverse")
   require("growthcurver")
-
 
   df.A = filter(x, ROW == wellRow)
 
   df = data.frame()
 
-  if (t_max == FALSE) {
-
-    for (i in t_min:500 ) {
-      fit = SummarizeGrowth(df.A$Time, df.A$mean, t_trim = i, bg_correct = "min")
-      d = data.frame("Time" = i, "r_p" = fit$vals$r_p)
-      df = rbind(df, d)
-    }
-  } else {
-    fit = SummarizeGrowth(df.A$Time, df.A$mean, t_trim = t_max, bg_correct = "min")
-    d = data.frame("Time" = t_max, "r_p" = fit$vals$r_p)
+  for (i in t_min:t_max ) {
+    fit = SummarizeGrowth(df.A$Time, df.A$mean, t_trim = i, bg_correct = "min")
+    d = data.frame("Time" = i, "r_p" = fit$vals$r_p)
     df = rbind(df, d)
   }
+
+  # if (t_max == FALSE) {
+  #
+  #   for (i in t_min:100 ) {
+  #     fit = SummarizeGrowth(df.A$Time, df.A$mean, t_trim = i, bg_correct = "min")
+  #     d = data.frame("Time" = i, "r_p" = fit$vals$r_p)
+  #     df = rbind(df, d)
+  #   }
+  # } else {
+  #   fit = SummarizeGrowth(df.A$Time, df.A$mean, t_trim = t_max, bg_correct = "min")
+  #   d = data.frame("Time" = t_max, "r_p" = fit$vals$r_p)
+  #   df = rbind(df, d)
+  # }
 
   optimalTime = df$Time[which.min(df$r_p)]
 
@@ -47,11 +52,12 @@ growthMetrics = function(x, wellRow = "A", t_min = 5, t_max = FALSE) {
 
   p = ggplot(df.A, aes(x = Time, y = mean - min(mean))) +
     jak_theme() +
-    stat_function(fun = fun, color = "#73CBF6", size = 2) +
-    geom_point(color = "#404530", size = 2) +
+    geom_point(color = "#000000", size = 1) +
+    stat_function(fun = fun, color = "#ff0000", size = 2) +
     xlab("Time") +
     ylab("OD600") +
-    geom_vline(xintercept = optimalTime, linetype = 2, color = "red")
+    geom_vline(xintercept = optimalTime, linetype = 2, color = "red") +
+    ggtitle(wellRow, paste0("sigma=", fit$vals$sigma))
 
   l = list("df" = d, "p" = p, "fun" = fun)
 
