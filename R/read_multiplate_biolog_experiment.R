@@ -4,13 +4,13 @@
 #'
 #' @export
 
-read_multiplate_biolog_experiment = function(path = "") {
+read_multiplate_biolog_experiment = function(path = "", plate = 'PM1') {
 
   require("tidyverse")
   require("readxl")
 
   files <- list.files(path)
-  files <- files[grepl(plateName, files)]
+  files <- files[grepl(plate, files)]
 
   # iterate through files
 
