@@ -37,7 +37,7 @@ read_multiplate_biolog_experiment = function(path = "", plate = 'PM1') {
     colnames(plateData) = plateData[1,]
     plateData = filter(plateData, Well != "Well")
 
-    plateData.melt = gather(plateData, "variable", "value", 2:ncol(plateData))
+    plateData.melt = gather(plateData, "Wavelength", "value", 2:ncol(plateData))
 
     # combine everything
     allData = left_join(plateData.melt, biologMasterExp, by = "Well")
