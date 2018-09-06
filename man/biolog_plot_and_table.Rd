@@ -9,7 +9,9 @@ biolog_plot_and_table(x, w = "600")
 \arguments{
 \item{x}{A df output from read_multiplate_biolog_experiment()}
 
-\item{w}{A wavelength (or vector of wavelengths)}
+\item{w}{A wavelength (or vector of wavelengths)
+
+Wavelength to RGB mappings come from https://academo.org/demos/wavelength-to-colour-relationship/}
 }
 \description{
 Convert plate data to plot and tibble
