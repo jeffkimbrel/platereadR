@@ -24,8 +24,6 @@ read_time_series_columns = function(file = "", repColumns = c(1,2,3), rowReplace
 
   raw.g = separate(raw.g, WELL, into = c("ROW", "COLUMN"), sep = 1)
 
-
-
   startTime = raw.g$Time[1]
   raw.g$Time = as.numeric(difftime(raw.g$Time, startTime, units = "hours"))
 
