@@ -5,6 +5,7 @@
 ```
 library('devtools')
 install_github('jeffkimbrel/platereadR')
+install_github('jeffkimbrel/jakR')
 ```
 # Read from file
 
