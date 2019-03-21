@@ -6,13 +6,12 @@
 #'
 
 add_biolog_metadata = function(plate, type = "PM1") {
-  require('readxl')
   require("tidyverse")
 
-  biolog = readRDS(file = "R/biolog.rds") %>%
+  biolog_temp = biolog %>%
     filter(PLATE == type)
 
-  plate = left_join(plate, biolog, by = "WELL")
+  plate = left_join(plate, biolog_temp, by = "WELL")
 
   return(plate)
 }
