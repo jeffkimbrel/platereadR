@@ -4,7 +4,9 @@
 \name{biolog}
 \alias{biolog}
 \title{A dataset with biolog metadata}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 288 rows and 7 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 288 rows and 7 columns.
+}
 \usage{
 biolog
 }

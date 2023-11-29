@@ -6,12 +6,11 @@
 #'
 
 add_biolog_metadata = function(plate, type = "PM1") {
-  require("tidyverse")
 
-  biolog_temp = biolog %>%
-    filter(PLATE == type)
+  biolog_temp = biolog |>
+    dplyr::filter(PLATE == type)
 
-  plate = left_join(plate, biolog_temp, by = "WELL")
+  plate = dplyr::left_join(plate, biolog_temp, by = "WELL")
 
   return(plate)
 }

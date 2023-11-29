@@ -6,11 +6,14 @@
 #' @export
 
 subtract_blank = function(plate, well) {
-  BLANK = plate[plate$WELL == well,] %>%
-    select(HOURS, OD) %>%
-    rename("BLANK" = "OD")
 
-  plateNew = left_join(plate, BLANK, by = "HOURS") %>%
-    mutate(OD = OD - (BLANK*0.99))
+  BLANK = plate |>
+    dplyr::filter(WELL == well) |>
+    dplyr::select(HOURS, OD) |>
+    dplyr::rename("BLANK" = "OD")
+
+  plateNew = dplyr::left_join(plate, BLANK, by = "HOURS") |>
+    dplyr::mutate(OD = OD - (BLANK*0.99))
+
   return(plateNew)
 }

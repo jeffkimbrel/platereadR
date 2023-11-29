@@ -1,13 +1,15 @@
-library("tidyverse")
-library("jakR")
+#library("tidyverse")
+#library("jakR")
 
 ## READ DATA
 
-plate = read_plate_text("~/Dropbox/LLNL/Projects/Microalgae/Isolates/biologResults/kristina/biolog_ARW1R1_PM1.txt")
-plate = right_trim(plate, timepoint = 40)
-plate = add_biolog_metadata(plate, type = "PM1")
-plate = subtract_blank(plate, "A1")
-plate = background_subtract(plate)
+file = "/Users/kimbrel1/Library/CloudStorage/OneDrive-LLNL/Documents/Biofuels_SFA/Isolates/biologResults/kristina/biolog_ARW1R1_PM1.txt"
+
+plate = read_plate_text("~/OD/Biofuels_SFA/Isolates/biologResults/kristina/biolog_ARW1R1_PM1.txt") |>
+  right_trim(timepoint = 2) |>
+  add_biolog_metadata(type = "PM1") |>
+  subtract_blank("A1") |>
+  background_subtract()
 
 # PLOT DATA
 p = plot_base_data(plate)

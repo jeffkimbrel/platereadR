@@ -5,8 +5,7 @@
 #'
 
 background_subtract = function(plate) {
-  plate = plate %>%
-    group_by(WELL) %>%
-    mutate(OD = OD - min(OD))
-  return(plate)
+  plate |>
+    dplyr::group_by(WELL) |>
+    dplyr::mutate(OD = OD - min(OD))
 }

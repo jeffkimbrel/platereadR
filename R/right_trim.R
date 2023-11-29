@@ -6,8 +6,6 @@
 #'
 
 right_trim = function(plate, timepoint) {
-  plate = plate %>%
-    filter(HOURS < timepoint)
-
-  return(plate)
+  plate |>
+    dplyr::filter(HOURS < timepoint)
 }

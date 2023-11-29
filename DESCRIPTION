@@ -1,16 +1,16 @@
 Package: platereadR
 Type: Package
 Title: A package for dealing with Biolog and plate read data
-Version: 0.5.9
+Version: 0.6.0
 Author: Jeff Kimbrel
 Maintainer: Jeff Kimbrel <jakpot@gmail.com>
 Description: Yeah, I should put some more info here!
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
-Imports:
-    tidyverse,
-    jakR
-Depends:
-    growthrates
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr,
+    lubridate,
+    readr,
+    tidyr

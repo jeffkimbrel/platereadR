@@ -4,7 +4,7 @@
 \alias{read_plate_text}
 \title{Read time series in a text file}
 \usage{
-read_plate_text(file = "")
+read_plate_text(file)
 }
 \arguments{
 \item{file}{An text file with wells as columns, and time points as rows}
