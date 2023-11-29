@@ -1,7 +1,7 @@
 Package: platereadR
 Type: Package
 Title: A package for dealing with Biolog and plate read data
-Version: 0.6.0
+Version: 0.6.0.9000
 Author: Jeff Kimbrel
 Maintainer: Jeff Kimbrel <jakpot@gmail.com>
 Description: Yeah, I should put some more info here!
@@ -11,6 +11,10 @@ LazyData: true
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
+    ggbeeswarm,
+    ggplot2,
+    growthrates,
     lubridate,
     readr,
+    tibble,
     tidyr

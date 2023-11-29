@@ -6,25 +6,24 @@
 #'
 #' @export
 
-add_gompertz_plot = function(p, plate, gompertz) {
-
-  newPlate = data.frame()
+add_gompertz_plot <- function(p, plate, gompertz) {
+  newPlate <- data.frame()
 
   for (WELL in unique(plate$WELL)) {
-    WELL_DATA = plate[plate$WELL==WELL,]
+    WELL_DATA <- plate[plate$WELL == WELL, ]
 
-    gompertz_equation = gompertz[gompertz$WELL==WELL,]
+    gompertz_equation <- gompertz[gompertz$WELL == WELL, ]
 
-    df = grow_gompertz(WELL_DATA$HOURS, gompertz_equation) %>%
-      as.data.frame() %>%
-      mutate(HOURS = time) %>%
-      mutate(GOMPERTZ = y) %>%
-      select(HOURS, GOMPERTZ)
+    df <- growthrates::grow_gompertz(WELL_DATA$HOURS, gompertz_equation) |>
+      as.data.frame() |>
+      dplyr::mutate(HOURS = time) |>
+      dplyr::mutate(GOMPERTZ = y) |>
+      dplyr::select(HOURS, GOMPERTZ)
 
-    WELL_DATA = left_join(WELL_DATA, df, by = "HOURS")
-    newPlate = rbind(newPlate, as.data.frame(WELL_DATA))
+    WELL_DATA <- dplyr::left_join(WELL_DATA, df, by = "HOURS")
+    newPlate <- rbind(newPlate, as.data.frame(WELL_DATA))
   }
 
-  p = p + geom_line(data = newPlate, aes(x = HOURS, y = GOMPERTZ), size = 2, alpha = 0.5, color = "#276DB5")
+  p <- p + ggplot2::geom_line(data = newPlate, ggplot2::aes(x = HOURS, y = GOMPERTZ), size = 2, alpha = 0.5, color = "red")
   return(p)
 }
